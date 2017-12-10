@@ -16,14 +16,8 @@
     <div class="col-xs-2">
       <input type="text" class="form-control input-sm" id="wc" value="0000" size="5" />
     </div>
-    <!-- hex to dec -->
-    <input type="hidden" class="form-control input-sm" id="rxc" value="" size="5" />
-    <input type="hidden" class="form-control input-sm" id="ryc" value="" size="5" />
-    <input type="hidden" class="form-control input-sm" id="rzc" value="" size="5" />
-    <input type="hidden" class="form-control input-sm" id="rwc" value="" size="5" />
-    <!-- / hex to dec myFunction(); -->
 
-    <button id="entertext" onclick="ConvertToDec();" type="button" class="btn btn-primary btn-sm" >Enter</button>
+    <button id="currcoord" onclick="ConvertToDec();" type="button" class="btn btn-primary btn-sm" >Enter</button>
   </div>
   <div class="col-md-6 text-justify mywhell">
     Display:
@@ -32,10 +26,10 @@
         <div class="col-md-6">
           <select id="mode" name="mode" class="form-control input-sm">
             <option value="systems">Star Systems</option>
-            <option value="pilots">Pilos</option>
+            <!--<option value="pilots">Pilos</option>-->
           </select>
         </div>
-        <button id="submitted" name="submitted" class="btn btn-primary btn-sm" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <button id="display" name="display" class="btn btn-primary btn-sm" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
       </fieldset>
     </form>
   </div>
@@ -45,18 +39,20 @@
 
 <script src="js/canvas_render.js"></script>
 <?php
+// Default mode
+$mode = 'systems';
 
-if (isset($_POST['submitted'])) {
-  if ($_POST['mode'] === 'systems') {
-    $sql = "SELECT * FROM `omnt_coords`";
-    $query = $link->query($sql);
-  } else if ($_POST['mode'] === 'pilots') {
-    $sql = "SELECT * FROM `omnt_coords`"
-    . " INNER JOIN `omnt_locations` ON `omnt_coords`.coord_id=`omnt_locations`.system_id"
-    . " INNER JOIN `omnt_pilots` ON `omnt_locations`.ship_id=`omnt_pilots`.pilot_id";
-    $query = $link->query($sql);
-  }
+if ($mode === 'systems') {
+  $sql = "SELECT * FROM `omnt_systems`";
+  $query = $link->query($sql);
+}/* else if ($mode === 'pilots') {
+  $sql = "SELECT * FROM `omnt_systems`"
+  . " INNER JOIN `omnt_locations` ON `omnt_systems`.id=`omnt_locations`.system_id"
+  . " INNER JOIN `omnt_pilots` ON `omnt_locations`.ship_id=`omnt_pilots`.pilot_id";
+  $query = $link->query($sql);
+}*/
 
+if (isset($query)) {
   while ($pins = $query->fetch_assoc()) {
     $x_pin = hexdec($pins['x']) /4;
     $z_pin = hexdec($pins['z']) /4;
@@ -64,11 +60,12 @@ if (isset($_POST['submitted'])) {
 
     /**/
     $pins['color'] = 'FFFFFF';
-    if ($_POST['mode'] === 'systems') {
-      $label = $pins['system'];
-    } else if ($_POST['mode'] === 'pilots') {
+    if ($mode === 'systems') {
+      $label = $pins['name'];
+    }/* else if ($mode === 'pilots') {
       $label = $pins['ship_name'];
-    }
+    }*/
+    /**/
 
     echo "<script>console.log('".$label.": [".$x_pin.",".$z_pin."] - ".$pins['color']."')</script>";
 
@@ -86,8 +83,3 @@ if (isset($_POST['submitted'])) {
   }
 }
 ?>
-<script>
-  function myFunction() {
-    location.reload();
-  }
-</script>

@@ -1,10 +1,7 @@
 var canvas=document.getElementById('c');
 var context=canvas.getContext('2d');
 
-console.log('canvas_render');
-
 function ConvertToDec(){
-  console.log("convert");
   var hexx = document.getElementById('xc').value;
   var decx = parseInt(hexx,16);
   // document.getElementById('rxc').value = decx;
@@ -36,9 +33,6 @@ function ConvertToDec(){
   context.fill();
   context.textAlign='center';
   context.fillText('User Location',x_pos,typeadjust);
-
-  console.log("add user");
-
 }
 
 /* */
@@ -55,6 +49,7 @@ context.lineWidth = 1;
 context.strokeStyle = '#FFFFFF';
 context.stroke();
 
+// Grid
 for (var x = 0.5; x < 1024; x += 10) {
   context.moveTo(x, 0);
   context.lineTo(x, 1024);
@@ -64,12 +59,12 @@ for (var y = 0.5; y < 1024; y += 10) {
   context.moveTo(0, y);
   context.lineTo(1024, y);
 }
-context.moveTo(0,0);
-
 context.strokeStyle = "#333333";
 context.stroke();
-context.font = "bold 10px sans-serif";
 
+// Center
+context.font = "bold 10px sans-serif";
+context.moveTo(0,0);
 context.beginPath();
 context.arc(512,512,5,0,Math.PI*2);
 context.strokeStyle='#FFFFFF';
