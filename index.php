@@ -69,8 +69,7 @@
       <ul class="sidebar-nav" id="sidebar">
         <li><a href="index.php">Home<i class="sub_icon fa fa-home" aria-hidden="true"></i></a></li>
         <li><a href="index.php?p=1">Star<i class="sub_icon fa fa-star" aria-hidden="true"></i></a></a></li>
-        <li><a href="index.php?p=2">Pilot<i class="sub_icon fa fa-space-shuttle" aria-hidden="true"></i></a></a></li>
-        <li><a href="index.php?p=3&page=1">List<i class="sub_icon fa fa-flag" aria-hidden="true"></i></a></a></li>
+        <li><a href="index.php?p=2&page=1">List<i class="sub_icon fa fa-flag" aria-hidden="true"></i></a></a></li>
         <li><a href="#" data-toggle="modal" data-target="#myModal" >About<i class="sub_icon fa fa-info-circle" aria-hidden="true"></i></a></li>
       </ul>
     </div>
@@ -88,8 +87,6 @@
 if ($PageNum == 1) {
     include("sh_coordinate.php");
 } else if ($PageNum == 2) {
-    include("sh_pilot.php");
-} else if ($PageNum == 3) {
     include("sh_coordinate_list.php");
 } else {
     include("canvas_ctrl.php");
@@ -108,16 +105,17 @@ if ($PageNum == 1) {
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">NEXT UPDATES</h4>
+          <h4 class="modal-title">FUTURE UPDATES</h4>
         </div>
         <div class="modal-body">
-          <p><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Improve design (this is uggly).</p>
-          <p><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Database to save locations.</p>
-          <p><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> LYC (Light Years Calculation).</p>
-          <p><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Customizations for each Alliance/Hub/travellers etc.</p>
+          <p><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Improve design.</p>
+          <p><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Player tracker</p>
+          <p><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Zoom feature</p>
+          <p><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Portal address</p>
           <br>
           <b>NMS Omnitrack by Junior Silva - Phenixpro.com web systems.</b><br>
-          <small>If you want to help send us a message: facebook.com/Phenix-1716922208588388</small>
+          Contributor Maxime Hebrard.<br>
+          <small>If you want to help send us a message <a href="https://github.com/juniorisajs/omnitrack">on Github</a></small>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

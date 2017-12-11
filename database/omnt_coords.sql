@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 -- Table structure for table `omnt_coords`
 --
 /* System info */
+CREATE TABLE `omnt_systems` (
+  `id` int(9) AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(99) NOT NULL,
+  `region` varchar(99) NULL,
+  `galaxy` varchar(99) NOT NULL,
+  `x` text NOT NULL,
+  `y` text NOT NULL,
+  `z` text NOT NULL,
+  `w` text NOT NULL,
+  `color` varchar(99) NULL,
+  `distance` int(9) NULL,
+  `planets` int(9) NULL,
+  `moons` int(9) NULL,
+  `lifeform` varchar(99) NULL,
+  `economy` varchar(99) NULL,
+  `wealth` varchar(99) NULL,
+  `conflict` varchar(99) NULL,
+  `discovered` varchar(99) NOT NULL,
+  `alliance` varchar(99) NULL,
+  `mode` varchar(99) NULL,
+  `platform` varchar(99) NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 /* Coords are alwayst star system */
 CREATE TABLE `omnt_coords` (
   `coord_id` int(9) AUTO_INCREMENT PRIMARY KEY,
@@ -35,44 +58,6 @@ CREATE TABLE `omnt_coords` (
   `platform` varchar(99) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-/* Pilot info */
-/* One player / one ship / one freighter */
-CREATE TABLE `omnt_pilots` (
-  `pilot_id` int(9) AUTO_INCREMENT PRIMARY KEY,
-  `username` varchar(999) NOT NULL,
-  `pilot_type` text NOT NULL,
-  `ship_name` varchar(999) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-/* Location info */
-/* One player is in a system at a defined date */
-CREATE TABLE `omnt_locations` (
-  `loc_id` int(9) AUTO_INCREMENT PRIMARY KEY,
-  `system_id` int(9) NOT NULL,
-  `ship_id` int(9) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/* Join table */
-/* system_id is foreign key from coords table */
-/* ship_id is foreign key from pilots table */
-
-/* Tags */
-/* Tags a system or a player */
-/* Civs, Anomaly, Black Hole, Base ... */
-CREATE TABLE `omnt_tags` (
-  `tag_id` int(9) AUTO_INCREMENT PRIMARY KEY,
-  `type` varchar(99) NOT NULL,
-  `object_id` int(9) NOT NULL,
-  `label` varchar(99) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/* Join table */
-/* type is system or pilot */
-/* object_id is the foreign key from systems or pilots (according to type) */
-/* label is the tag */
-
 --
 -- Dumping data for table `omnt_coords`
 --
-
-INSERT INTO `omnt_coords` (`username`, `coord_type`, `x`, `y`, `z`, `w`, `star_class`, `system_name`, `region_name`, `galaxy_name`, `platform`) VALUES
-('omnt', 'Pilgrim', '064A', '0082', '01B6', '009A', 'O6p', 'Pilgrim Star', 'Ocopadica', 'Euclid', 'PC'),
-('omnt', 'Pilgrim', '07FF', '007F', '07FF', '0000', '', 'Center', '.', '.', 'PC/PS4');
