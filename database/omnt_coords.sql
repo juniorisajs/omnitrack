@@ -19,28 +19,31 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `omnt_coords`
 --
-/* System info */
+
+-- System info
 CREATE TABLE `omnt_systems` (
-  `id` int(9) AUTO_INCREMENT PRIMARY KEY,
-  `name` varchar(99) NOT NULL,
+  `id` int AUTO_INCREMENT PRIMARY KEY,
+  `namegame` varchar(99) NOT NULL,
+  `namepc` varchar(99) NULL,
+  `discoveredpc` varchar(99) NULL,
+  `nameps4` varchar(99) NULL,
+  `discoveredps4` varchar(99) NULL,
   `region` varchar(99) NULL,
-  `galaxy` varchar(99) NOT NULL,
-  `x` text NOT NULL,
-  `y` text NOT NULL,
-  `z` text NOT NULL,
-  `w` text NOT NULL,
-  `color` varchar(99) NULL,
-  `distance` int(9) NULL,
-  `planets` int(9) NULL,
-  `moons` int(9) NULL,
-  `lifeform` varchar(99) NULL,
-  `economy` varchar(99) NULL,
-  `wealth` varchar(99) NULL,
-  `conflict` varchar(99) NULL,
-  `discovered` varchar(99) NOT NULL,
-  `alliance` varchar(99) NULL,
-  `mode` varchar(99) NULL,
-  `platform` varchar(99) NULL
+  `galaxy` tinyint NOT NULL,
+  `voxelx` smallint NOT NULL,
+  `voxely` smallint NOT NULL,
+  `voxelz` smallint NOT NULL,
+  `ssi` text NOT NULL,
+  `spectral` varchar(4) NULL,
+  `planets` tinyint NULL,
+  `moons` tinyint NULL,
+  `lifeform` tinyint NULL,
+  `economy` tinyint NULL,
+  `wealth` tinyint NULL,
+  `conflict` tinyint NULL,
+  `buy` decimal(5,2),
+  `sell` decimal(5,2),
+  `version` varchar(99) NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 /* Coords are alwayst star system */
