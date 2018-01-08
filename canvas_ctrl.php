@@ -54,18 +54,16 @@ if ($mode === 'systems') {
 
 if (isset($query)) {
   while ($pins = $query->fetch_assoc()) {
-    $x_pin = hexdec($pins['x']) /4;
-    $z_pin = hexdec($pins['z']) /4;
+    // $x_pin = hexdec($pins['x']) /4;
+    // $z_pin = hexdec($pins['z']) /4;
+    $x_pin = ($pins['voxelx'] + 2047) / 4;
+    $z_pin = ($pins['voxelz'] + 2047) / 4;
     $typeadjust = $z_pin + 17;
 
-    /**/
     $pins['color'] = 'FFFFFF';
     if ($mode === 'systems') {
-      $label = $pins['name'];
-    }/* else if ($mode === 'pilots') {
-      $label = $pins['ship_name'];
-    }*/
-    /**/
+      $label = $pins['namepc'] ? $pins['namepc'] : $pins['namegame'] ;
+    }
 
     echo "<script>console.log('".$label.": [".$x_pin.",".$z_pin."] - ".$pins['color']."')</script>";
 
