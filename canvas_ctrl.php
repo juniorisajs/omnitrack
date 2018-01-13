@@ -1,7 +1,7 @@
 <br>
 
-<div class="container-fluid">
-  <div class="col-md-6 text-justify mywhell">
+<div class="container-fluid mywhell">
+  <div class="col-md-6 text-justify ">
     <!--  <input type="text" class="form-control input-sm"id="words" value="240,500" /> -->
     Coordinates: <small><i>Last is optional!</i></small><br>
     <div class="col-xs-2">
@@ -17,9 +17,9 @@
       <input type="text" class="form-control input-sm" id="wc" value="0000" size="5" />
     </div>
 
-    <button id="currcoord" onclick="ConvertToDec();" type="button" class="btn btn-primary btn-sm" >Enter</button>
+    <button id="currcoord" onclick="ConvertToDec();" type="button" class="btn btn-default btn-sm" ><i class="fa fa-search" aria-hidden="true"></i> Search</button>
   </div>
-  <div class="col-md-6 text-justify mywhell">
+  <div class="col-md-6 text-justify">
     Display:
     <form class="form-horizontal" action="" method="POST">
       <fieldset>
@@ -29,7 +29,7 @@
             <!--<option value="pilots">Pilos</option>-->
           </select>
         </div>
-        <button id="display" name="display" class="btn btn-primary btn-sm" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <button id="display" name="display" class="btn btn-default btn-sm" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
       </fieldset>
     </form>
   </div>

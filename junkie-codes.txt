@@ -1,0 +1,36 @@
+  A OLDEST NAVBAR STYLE
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#"><img src="img/brand.png"></a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+A OLDEST SIDE MENU NOW WE USE COLAPSES :)
+
+ <div id="wrapper" >
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul id="sidebar_menu" class="sidebar-nav">
+        <li class="sidebar-brand"><a id="menu-toggle" href="#">MENU<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
+      </ul>
+      <ul class="sidebar-nav" id="sidebar">
+        <li><a href="index.php">Home<i class="sub_icon fa fa-home" aria-hidden="true"></i></a></li>
+        <li><a href="index.php?p=1">Star<i class="sub_icon fa fa-star" aria-hidden="true"></i></a></a></li>
+        <li><a href="index.php?p=2&page=1">List<i class="sub_icon fa fa-flag" aria-hidden="true"></i></a></a></li>
+        <li><a href="#" data-toggle="modal" data-target="#myModal" >About<i class="sub_icon fa fa-info-circle" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+
+    <div id="page-content-wrapper">
+
+     </div>
+  </div>
+
+  DONT FORGET TO CHECK!
