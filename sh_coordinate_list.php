@@ -1,4 +1,20 @@
 <?php
+/*
+Use of hack of FontAwesome
+
+in .css
+
+.fa-home:before {
+  content: "\f015";
+}
+
+in .svg
+
+<glyph glyph-name="home" unicode="&#xf015;" horiz-adv-x="1664"
+d="M1408 544v-480q0 -26 -19 -45t-45 -19h-384v384h-256v-384h-384q-26 0 -45 19t-19 45v480q0 1 0.5 3t0.5 3l575 474l575 -474q1 -2 1 -6zM1631 613l-62 -74q-8 -9 -21 -11h-3q-13 0 -21 7l-692 577l-692 -577q-12 -8 -24 -7q-13 2 -21 11l-62 74q-8 10 -7 23.5t11 21.5
+l719 599q32 26 76 26t76 -26l244 -204v195q0 14 9 23t23 9h192q14 0 23 -9t9 -23v-408l219 -182q10 -8 11 -21.5t-7 -23.5z" />
+*/
+
 // include 'db_bridge.php';
 // already included in index
 // Get data
@@ -52,12 +68,12 @@ while ( $pins = $query->fetch_assoc() ) {
   $staridx = str_pad(strtoupper(dechex($pins['ssi'])), 4, "0", STR_PAD_LEFT);
   // Voxel to Glyphs
   $gidx = substr($staridx, 1);
-  $gx = strtoupper(dechex((($pins['voxelx'] + 2047) + 2049) % 4096));
-  $gy = strtoupper(dechex((($pins['voxely'] + 127) + 129) % 254));
-  $gz = strtoupper(dechex((($pins['voxelz'] + 2047) + 2049) % 4096));
+  $gx = str_pad(strtoupper(dechex((($pins['voxelx'] + 2047) + 2049) % 4096)), 3, "0", STR_PAD_LEFT);
+  $gy = str_pad(strtoupper(dechex((($pins['voxely'] + 127) + 129) % 256)), 2, "0", STR_PAD_LEFT);
+  $gz = str_pad(strtoupper(dechex((($pins['voxelz'] + 2047) + 2049) % 4096)), 3, "0", STR_PAD_LEFT);
   /* Compute Distance to Center */
   // sqrt(VoxelX^2 + VoxelY^2 + VoxelZ^2) * 100 * 4
-  $dist = sqrt(pow($pins['voxelx'], 2) + pow($pins['voxely'], 2) + pow($pins['voxelz'], 2)) * 100 * 4;
+  $dist = (int)(sqrt(pow($pins['voxelx'], 2) + pow($pins['voxely'], 2) + pow($pins['voxelz'], 2)) * 100 * 4);
   // echo "<pre>Hex:".$_POST['xc'].",".$_POST['yc'].",".$_POST['zc']."</pre>";
   // echo "<pre>Dec:".hexdec($_POST['xc']).",".hexdec($_POST['yc']).",".hexdec($_POST['zc'])."</pre>";
   // echo "<pre>Voxel".(hexdec($_POST['xc'])- 2047).",".(hexdec($_POST['yc']) - 127).",".(hexdec($_POST['zc']) - 2047)."</pre>";

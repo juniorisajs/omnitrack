@@ -9,14 +9,6 @@ $str = file_get_contents('./database/fields.json');
 $fields = json_decode($str, true); // decode the JSON into an associative array
 // echo '<pre>' . print_r($json, true) . '</pre>';
 
-// Sort the fields
-// function cmp($a, $b) {
-//   return strcmp($a['label'], $b['label']);
-// }
-// usort($fields['economy'], "cmp");
-// usort($fields['wealth'], "cmp");
-// usort($fields['conflict'], "cmp");
-
 // If POST data
 if (isset($_POST['save'])) {
   /* Escape values */
@@ -31,14 +23,6 @@ if (isset($_POST['save'])) {
   $voxelZ = hexdec($_POST['zc']) - 2047;
   $ssi = hexdec($_POST['staridx']);
 
-  /* Compute Distance to Center */
-  // sqrt(VoxelX^2 + VoxelY^2 + VoxelZ^2) * 100 * 4
-  // $dist = sqrt(pow(hexdec($_POST['xc']) - 2047, 2) + pow(hexdec($_POST['yc']) - 127, 2) + pow(hexdec($_POST['zc']) - 2047, 2)) * 100 * 4;
-  // echo "<pre>Hex:".$_POST['xc'].",".$_POST['yc'].",".$_POST['zc']."</pre>";
-  // echo "<pre>Dec:".hexdec($_POST['xc']).",".hexdec($_POST['yc']).",".hexdec($_POST['zc'])."</pre>";
-  // echo "<pre>Voxel".(hexdec($_POST['xc'])- 2047).",".(hexdec($_POST['yc']) - 127).",".(hexdec($_POST['zc']) - 2047)."</pre>";
-  // echo "<pre>Dist".$dist."</pre>";
-
   /* Add system */
   mysqli_query($link, "INSERT INTO `omnt_systems` (`namegame`,`namepc`,`discoveredpc`,`nameps4`,`discoveredps4`, `region`, `galaxy`, `voxelx`, `voxely`, `voxelz`, `ssi`, `spectral`, `planets`, `moons`, `lifeform`, `economy`, `wealth`, `conflict`, `buy`, `sell`, `version`) "
   . "VALUES ('{$_POST['namegame']}','{$_POST['namepc']}','{$_POST['discoveredpc']}','{$_POST['nameps4']}','{$_POST['discoveredps4']}',"
@@ -47,10 +31,13 @@ if (isset($_POST['save'])) {
   . "'{$_POST['buy']}','{$_POST['sell']}','{$v}')"
   ) or die(mysqli_error($link));
 ?>
-<div class="alert alert-success" role="alert">Star system saved!</div>
+<div class="alert alert-success" role="alert">
+  <span>Star system saved!</span>
 <?php
+include 'sh_wiki.php';
 }
 ?>
+</div>
 <br>
 <form class="form-horizontal formfonts" action="" method="POST">
   <fieldset>
