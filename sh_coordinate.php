@@ -39,9 +39,13 @@ include 'sh_wiki.php';
 ?>
 </div>
 <br>
+
 <form class="form-horizontal formfonts" action="" method="POST">
+<h2><i class="fa fa-flag" aria-hidden="true"></i> Star Systems </h2>
+  <p>Register your coordinates to go!</p>
+  <hr>
   <fieldset>
-    <legend class="formfonts header">Star System</legend>
+    
     <div class="form-group">
       <label class="col-md-2 control-label">Coordinates</label>
       <div class="col-md-2">
