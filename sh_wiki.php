@@ -33,7 +33,7 @@ $wiki = "{{Version|".$v."}}
 | region = ".$_POST['region']."
 | galaxy = ".$galaxies[$_POST['galaxy']]."
 | class = ".$_POST['spectral']."
-| distance = ".$dist."
+| distance = ".number_format($dist)."
 | planet = ".$_POST['planets']."
 | moon = ".$_POST['moons']."
 | faction = ".$fields['lifeform'][$_POST['lifeform']]['label']."
@@ -55,7 +55,7 @@ if ($_POST['namepc'] !== null) {
   $wiki .= "{{alias|platform=PC|text=Current|name=".$_POST['namepc']."}}
 ";
 }
-if ($_POST['namepcs4'] !== null) {
+if ($_POST['nameps4'] !== '') {
   $wiki .= "{{alias|platform=PS4|text=Current|name=".$_POST['nameps4']."}}
 ";
 }
